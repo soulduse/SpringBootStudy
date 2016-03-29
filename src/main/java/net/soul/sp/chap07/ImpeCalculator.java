@@ -7,9 +7,11 @@ public class ImpeCalculator implements Calculator {
 
     @Override
     public long factorial(long num) {
-        long start =System.currentTimeMillis();
         long result = 1;
-//        for(int i=0; )
-        return 0;
+        for(int i=0; i<=num; i++)
+        {
+            result *= i;
+        }
+        return result;
     }
 }
