@@ -29,7 +29,11 @@ repositories {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.boot:spring-boot-starter-web')
-	testCompile('org.springframework.boot:spring-boot-starter-test') 
+	compile('org.springframework:spring-aop:4.2.5.RELEASE')
+	compile('aopalliance:aopalliance:1.0')
+	compile('org.aspectj:aspectjrt:1.8.5')
+	compile('org.aspectj:aspectjweaver:1.8.8')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
 

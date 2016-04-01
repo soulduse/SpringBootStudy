@@ -8,8 +8,17 @@
        http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <!-- 공통 기능을 제공할 클래스 빈으로 등록 -->
-    <bean id="exeTimeAspect" class="aspect.ExeTimeAspect"/>
+    <bean id="exeTimeAspect" class="net.soul.sp.aspect.ExeTimeAspect"/>
 
     <!-- Aspect 설정 : Advice를 어떤 Pointcut에 적용할 지 설정 -->
+    <aop:config>
+        <aop:aspect id="measureAspect" ref="exeTimeAspect">
+            <aop:pointcut id="publicMethod" expression="execution(public * net.soul.sp.chap07..*(..))" />
+            <aop:around pointcut-ref="publicMethod" method="measure"/>
+        </aop:aspect>
+    </aop:config>
+
+    <bean id="impeCal" class="net.soul.sp.chap07.ImpeCalculator"></bean>
+    <bean id="recCal" class="net.soul.sp.chap07.RecCalculator"></bean>
 
 </beans>
