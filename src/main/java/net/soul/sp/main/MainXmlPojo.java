@@ -1,6 +1,7 @@
 package net.soul.sp.main;
 
 import net.soul.sp.chap07.Calculator;
+import net.soul.sp.chap07.Exam;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
@@ -20,8 +21,6 @@ public class MainXmlPojo {
         Calculator recCal = ctx.getBean("recCal", Calculator.class);
         long fiveFact2 = recCal.factorial(5);
         System.out.println("recCal.factorial(5) = "+fiveFact2);
-
-
     }
 
 
