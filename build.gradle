@@ -29,6 +29,8 @@ repositories {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.boot:spring-boot-starter-web')
+	compile("org.springframework.boot:spring-boot-starter-jdbc")
+	compile("mysql:mysql-connector-java:5.1.31")
 	compile('org.springframework:spring-aop:4.2.5.RELEASE')
 	compile('aopalliance:aopalliance:1.0')
 	compile('org.aspectj:aspectjrt:1.8.5')
