@@ -16,6 +16,9 @@ public class Member {
     private int id;
     @Column(name = "EMAIL")
     private String email;
+    @Column(name = "PASSWORD")
+    private String password;
+
     @Column(name = "NAME")
     private String name;
     @Column(name = "REGDATE")
@@ -35,6 +38,14 @@ public class Member {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getName() {

@@ -33,11 +33,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-freemarker')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	runtime('mysql:mysql-connector-java')
-	compile('c3p0:c3p0:0.9.1.2')
-	compile('org.springframework:spring-aop:4.2.5.RELEASE')
-	compile('aopalliance:aopalliance:1.0')
-	compile('org.aspectj:aspectjrt:1.8.5')
-	compile('org.aspectj:aspectjweaver:1.8.8')
+	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
