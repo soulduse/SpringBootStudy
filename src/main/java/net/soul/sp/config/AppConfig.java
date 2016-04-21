@@ -2,8 +2,8 @@ package net.soul.sp.config;
 
 import net.soul.sp.dao.IMemberDao;
 import net.soul.sp.dao.MemberDao;
+import net.soul.sp.entity.Member;
 import org.apache.commons.dbcp.BasicDataSource;
-import org.aspectj.weaver.Member;
 import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
