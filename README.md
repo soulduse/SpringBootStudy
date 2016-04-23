@@ -1,3 +1,5 @@
+![alt text](https://github.com/soulduse/springboot-study/blob/master/art/icon.png)
+
 # 개인 프로젝트
 ----
 
