@@ -20,6 +20,10 @@ import javax.sql.DataSource;
 @Configuration
 @EnableTransactionManagement
 public class AppConfig {
+
+    private static final String HOME_DATABASE = "192.168.206.128";
+    private static final String COMPANY_DATABASE = "172.16.135.7";
+
     @Bean
     public IMemberDao memberDao(){
         return new MemberDao();
@@ -39,9 +43,9 @@ public class AppConfig {
     public DataSource getDataSource() {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://172.16.135.7:3306/spring4");
+        dataSource.setUrl("jdbc:mysql://"+HOME_DATABASE+"/spring4");
         dataSource.setUsername("root");
-        dataSource.setPassword("master");
+        dataSource.setPassword("1234");
 
         return dataSource;
     }
