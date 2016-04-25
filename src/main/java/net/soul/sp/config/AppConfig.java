@@ -1,8 +1,8 @@
 package net.soul.sp.config;
 
-import net.soul.sp.dao.IMemberDao;
-import net.soul.sp.dao.MemberDao;
-import net.soul.sp.entity.Member;
+import net.soul.sp.repository.IMemberDao;
+import net.soul.sp.repository.MemberDao;
+import net.soul.sp.domain.Member;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Bean;
@@ -21,6 +21,10 @@ import javax.sql.DataSource;
 @EnableTransactionManagement
 public class AppConfig {
 
+}
+
+
+/*
     private static final String HOME_DATABASE = "192.168.206.128";
     private static final String COMPANY_DATABASE = "172.16.135.7";
 
@@ -53,4 +57,5 @@ public class AppConfig {
     public HibernateTransactionManager hibTransMan(){
         return new HibernateTransactionManager(sessionFactory());
     }
-}
+
+    */

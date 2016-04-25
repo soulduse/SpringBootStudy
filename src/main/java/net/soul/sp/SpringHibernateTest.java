@@ -1,7 +1,7 @@
 package net.soul.sp;
 
 import net.soul.sp.config.AppConfig;
-import net.soul.sp.dao.IMemberDao;
+import net.soul.sp.repository.IMemberDao;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
