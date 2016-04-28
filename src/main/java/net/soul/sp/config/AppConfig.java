@@ -5,7 +5,9 @@ import net.soul.sp.repository.MemberDao;
 import net.soul.sp.domain.Member;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
@@ -18,8 +20,21 @@ import javax.sql.DataSource;
  * Created by sould on 2016-04-18.
  */
 @Configuration
+@ComponentScan
 @EnableTransactionManagement
 public class AppConfig {
+    @Value("${spring.datasource.username}")
+    private String username;
+
+    @Value("${spring.datasource.password}")
+    private String password;
+
+    @Value("${spring.datasource.url}")
+    private String driver;
+
+    @Value("${spring.datasource.dataSourceClassName}")
+    private String url;
+
 
 }
 

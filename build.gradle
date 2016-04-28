@@ -36,7 +36,7 @@ dependencies {
 	compile ('org.springframework.boot:spring-boot-starter-freemarker')
 	compile ('org.springframework.boot:spring-boot-starter-web')
 	compile ('org.slf4j:slf4j-api:1.7.21')
-	compile ('org.projectlombok:lombok:1.16.8')
+//	compile ('org.projectlombok:lombok:1.16.8')
 	compile ('commons-dbcp:commons-dbcp:1.4')
 	runtime ('mysql:mysql-connector-java')
 	providedRuntime ('org.springframework.boot:spring-boot-starter-tomcat')

@@ -20,7 +20,10 @@ public class App implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Member create = memberRepository.save(new Member(null, "soul@koolsign.net", "1234","Kim", "20160426"));
+//        Member create = memberRepository.save(new Member(null, "soul@koolsign.net", "1234","Kim", "20160426"));
+//        System.out.println(create+" is create!");
+//
+//        memberRepository.findAll().forEach(System.out::println);
     }
 }
 
