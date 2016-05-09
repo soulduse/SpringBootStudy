@@ -1,17 +1,21 @@
 package net.soul.sp;
 
-import net.soul.sp.repository.MemberRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
+@Configuration
+@ComponentScan
+@EnableAutoConfiguration
+@PropertySource("application.properties")
 @SpringBootApplication
 public class SpringBootStudyApplication {
 
-	@Autowired
-	MemberRepository memberRepository;
 
 	private static final Logger log = LoggerFactory.getLogger(SpringBootStudyApplication.class);
 
