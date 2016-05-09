@@ -1,8 +1,6 @@
 package net.soul.sp.domain;
 
-//import lombok.AllArgsConstructor;
-//import lombok.Data;
-//import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -20,6 +18,7 @@ public class Member {
     private String password;
     private String name;
     @Column(name="reg_date")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date regDate;
 
     public Member(){
