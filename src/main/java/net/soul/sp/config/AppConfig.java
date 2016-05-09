@@ -23,6 +23,7 @@ import javax.sql.DataSource;
 @ComponentScan
 @EnableTransactionManagement
 public class AppConfig {
+
     @Value("${spring.datasource.username}")
     private String username;
 
@@ -32,7 +33,7 @@ public class AppConfig {
     @Value("${spring.datasource.url}")
     private String driver;
 
-    @Value("${spring.datasource.dataSourceClassName}")
+    @Value("${spring.datasource.driver-class-name}")
     private String url;
 
 
