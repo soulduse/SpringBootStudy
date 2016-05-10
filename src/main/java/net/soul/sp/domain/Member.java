@@ -1,9 +1,10 @@
 package net.soul.sp.domain;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.annotations.Type;
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
 
 import javax.persistence.*;
-import java.util.Date;
 
 /**
  * Created by sould on 2016-04-18.
@@ -17,9 +18,8 @@ public class Member {
     private String email;
     private String password;
     private String name;
-    @Column(name="reg_date")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date regDate;
+//    @Column(name = "reg_date", nullable = false)
+    private DateTime regDate;
 
     public Member(){
     }
@@ -62,11 +62,14 @@ public class Member {
         this.name = name;
     }
 
-    public Date getRegDate() {
+
+
+    @org.hibernate.annotations.Type(type = "org.joda.time.contrib.hibernate.PersistentDateTime")
+    public DateTime getRegDate() {
         return regDate;
     }
 
-    public void setRegDate(Date regDate) {
+    public void setRegDate(DateTime regDate) {
         this.regDate = regDate;
     }
 

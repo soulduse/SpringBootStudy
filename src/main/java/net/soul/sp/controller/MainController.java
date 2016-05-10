@@ -2,6 +2,9 @@ package net.soul.sp.controller;
 
 import net.soul.sp.domain.Member;
 import net.soul.sp.repository.MemberRepository;
+import org.joda.time.DateTime;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +19,8 @@ import java.util.List;
 @RestController
 public class MainController{
 
+    private static final Logger log = LoggerFactory.getLogger(MainController.class);
+
     @Autowired
     MemberRepository memberRepository;
 
@@ -26,6 +31,15 @@ public class MainController{
 
     @RequestMapping("/add")
     public Member add(Member member){
+        DateTime dateTime = new DateTime();
+
+        log.error("soul dateVal : "+dateTime.toDate().toString());
+        log.error("soul - error");
+        log.info("soul - info");
+        log.warn("soul - warm");
+        log.debug("soul - debug");
+        log.trace("soul - trace");
+        member.setRegDate(dateTime);
         Member memberData = memberRepository.save(member);
         return memberData;
     }
