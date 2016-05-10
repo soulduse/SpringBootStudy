@@ -50,4 +50,10 @@ public class MainController{
         return memberList;
     }
 
+    @RequestMapping("/email")
+    public List<Member> emailList(Model model){
+        List<Member> memberList = memberRepository.findByEmail("soul@gmail.com");
+        return memberList;
+    }
+
 }

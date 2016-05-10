@@ -18,7 +18,6 @@ public class Member {
     private String email;
     private String password;
     private String name;
-//    @Column(name = "reg_date", nullable = false)
     private DateTime regDate;
 
     public Member(){
@@ -64,7 +63,6 @@ public class Member {
 
 
 
-    @org.hibernate.annotations.Type(type = "org.joda.time.contrib.hibernate.PersistentDateTime")
     public DateTime getRegDate() {
         return regDate;
     }
