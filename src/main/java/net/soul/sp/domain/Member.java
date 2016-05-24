@@ -19,14 +19,18 @@ public class Member {
     private String password;
     private String name;
     private DateTime regDate;
+    private DateTime updDate;
 
     public Member(){
     }
 
-    public Member(String email, String password, String name){
+    public Member(long idx, String email, String password, String name, DateTime regDate, DateTime updDate){
+        this.idx        = idx;
         this.email      = email;
         this.password   = password;
         this.name       = name;
+        this.regDate    = regDate;
+        this.updDate    = updDate;
     }
 
     public long getIdx() {
@@ -61,14 +65,20 @@ public class Member {
         this.name = name;
     }
 
-
-
     public DateTime getRegDate() {
         return regDate;
     }
 
     public void setRegDate(DateTime regDate) {
         this.regDate = regDate;
+    }
+
+    public DateTime getUpdDate() {
+        return updDate;
+    }
+
+    public void setUpdDate(DateTime updDate) {
+        this.updDate = updDate;
     }
 
     public String toString(){

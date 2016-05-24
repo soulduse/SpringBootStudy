@@ -3,10 +3,8 @@ package net.soul.sp.controller;
 import net.soul.sp.domain.Member;
 import net.soul.sp.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -36,6 +34,29 @@ public class MemberRestController {
     Member getMember(@PathVariable Long idx){
         Member member = memberService.findOne(idx);
         return member;
+    }
+
+    // 신규 사용자 등록
+    @RequestMapping(method = RequestMethod.POST)
+    // API 정상 동작시 201, 아니면 200 OK 반환
+    @ResponseStatus(HttpStatus.CREATED)
+    Member postMember(@RequestBody Member member){
+        return memberService.create(member);
+    }
+
+    // 사용자 한명의 정보 업데이트
+    @RequestMapping(value = "{id}", method = RequestMethod.PUT)
+    Member putMember(@PathVariable Long idx, @RequestBody Member member){
+        member.setIdx(idx);
+        return memberService.update(member);
+    }
+
+    // 사용자 한명의 정보 삭제
+    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+    // 204 NO_CONTENT 반환
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    boolean deleteMember(@PathVariable Long idx){
+        return memberService.delete(idx);
     }
 
 }

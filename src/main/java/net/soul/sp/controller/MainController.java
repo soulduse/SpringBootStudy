@@ -37,6 +37,7 @@ public class MainController{
     public Member add(Member member){
         DateTime dateTime = new DateTime();
         member.setRegDate(dateTime);
+        member.setUpdDate(dateTime);
         Member memberData = memberRepository.save(member);
         return memberData;
     }

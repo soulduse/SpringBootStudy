@@ -35,7 +35,8 @@ public class MemberService {
         return memberRepository.save(member);
     }
 
-    public void delete(long idx){
+    public boolean delete(long idx){
         memberRepository.delete(idx);
+        return !memberRepository.exists(idx);
     }
 }
