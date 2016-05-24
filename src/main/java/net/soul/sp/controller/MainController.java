@@ -33,24 +33,11 @@ public class MainController{
         return "Hello World!";
     }
 
-    @RequestMapping("/add")
+    @RequestMapping("/member/add")
     public Member add(Member member){
         DateTime dateTime = new DateTime();
-
-        log.error("soul dateVal : "+dateTime.toDate().toString());
-        log.error("soul - error");
-        log.info("soul - info");
-        log.warn("soul - warm");
-        log.debug("soul - debug");
-        log.trace("soul - trace");
         member.setRegDate(dateTime);
         Member memberData = memberRepository.save(member);
-        Pageable pageable = new PageRequest(0,3);
-        Page<Member> page = memberRepository.findAll(pageable);
-        log.info("한 페이지당 데이터 수 : "+page.getSize());
-        log.info("현재 페이지 : "+page.getNumber());
-        log.info("전체 페이지 수 : "+page.getTotalPages());
-        log.info("전체 데이터 수 : "+page.getTotalElements());
         return memberData;
     }
 
@@ -65,5 +52,16 @@ public class MainController{
         List<Member> memberList = memberRepository.findByEmail("soul@gmail.com");
         return memberList;
     }
+
+
+    /*
+
+     Pageable pageable = new PageRequest(0,3);
+        Page<Member> page = memberRepository.findAll(pageable);
+        log.info("한 페이지당 데이터 수 : "+page.getSize());
+        log.info("현재 페이지 : "+page.getNumber());
+        log.info("전체 페이지 수 : "+page.getTotalPages());
+        log.info("전체 데이터 수 : "+page.getTotalElements());
+     */
 
 }

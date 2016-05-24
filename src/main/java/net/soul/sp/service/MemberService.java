@@ -10,6 +10,8 @@ import java.util.List;
 
 /**
  * Created by sould on 2016-04-26.
+ * update  : 2016-05-24
+ * comment : ID의 존재 여부체크 하는 로직 추가 필요.
  */
 @Service
 @Transactional
@@ -21,8 +23,8 @@ public class MemberService {
         return memberRepository.findAllOrderByName();
     }
 
-    public Member findOne(long id){
-        return memberRepository.findOne(id);
+    public Member findOne(long idx){
+        return memberRepository.findOne(idx);
     }
 
     public Member create(Member member){
@@ -33,7 +35,7 @@ public class MemberService {
         return memberRepository.save(member);
     }
 
-    public void delete(long id){
-        memberRepository.delete(id);
+    public void delete(long idx){
+        memberRepository.delete(idx);
     }
 }

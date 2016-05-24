@@ -9,6 +9,7 @@ import java.util.List;
 
 /**
  * Created by sould on 2016-04-26.
+ * Repository -> DB 연결을 담당하는 객체
  */
 @Repository
 public interface MemberRepository extends JpaRepository<Member, Long> {
