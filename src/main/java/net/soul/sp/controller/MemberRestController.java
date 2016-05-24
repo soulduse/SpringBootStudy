@@ -2,6 +2,7 @@ package net.soul.sp.controller;
 
 import net.soul.sp.domain.Member;
 import net.soul.sp.service.MemberService;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -41,12 +42,17 @@ public class MemberRestController {
     // API 정상 동작시 201, 아니면 200 OK 반환
     @ResponseStatus(HttpStatus.CREATED)
     Member postMember(@RequestBody Member member){
+        DateTime dateTime = new DateTime();
+        member.setRegDate(dateTime);
+        member.setUpdDate(dateTime);
         return memberService.create(member);
     }
 
     // 사용자 한명의 정보 업데이트
     @RequestMapping(value = "{id}", method = RequestMethod.PUT)
     Member putMember(@PathVariable Long idx, @RequestBody Member member){
+        DateTime dateTime = new DateTime();
+        member.setUpdDate(dateTime);
         member.setIdx(idx);
         return memberService.update(member);
     }
