@@ -4,9 +4,13 @@ import net.soul.sp.domain.Member;
 import net.soul.sp.service.MemberService;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 /**
@@ -37,15 +41,31 @@ public class MemberRestController {
         return member;
     }
 
+    /*
     // 신규 사용자 등록
     @RequestMapping(method = RequestMethod.POST)
     // API 정상 동작시 201, 아니면 200 OK 반환
     @ResponseStatus(HttpStatus.CREATED)
-    Member postMember(@RequestBody Member member){
+    Member postMember(@RequestBody Member member, UriComponentsBuilder uriComponentsBuilder){
         DateTime dateTime = new DateTime();
         member.setRegDate(dateTime);
         member.setUpdDate(dateTime);
         return memberService.create(member);
+    }
+    //*/
+
+    // 신규 사용자 등록
+    @RequestMapping(method = RequestMethod.POST)
+    ResponseEntity<Member> postMember(@RequestBody Member member,
+                                      UriComponentsBuilder uriBuilder){
+        DateTime dateTime = new DateTime();
+        member.setRegDate(dateTime);
+        member.setUpdDate(dateTime);
+        Member created = memberService.create(member);
+        URI location = uriBuilder.path("api/members/{idx}").buildAndExpand(created.getIdx()).toUri();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(location);
+        return new ResponseEntity<Member>(created, headers, HttpStatus.CREATED);
     }
 
     // 사용자 한명의 정보 업데이트
