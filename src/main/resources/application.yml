@@ -1,0 +1,20 @@
+# Freemarker
+spring:
+  freemarker:
+    cache: false
+    charset: UTF-8
+
+# Database
+  datasource:
+    url: jdbc:mysql://192.168.206.128:3306/spring4
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.jdbc.Driver
+
+#jpa
+  jpa:
+    generate-ddl: false
+    hibernate.ddl-auto: create
+    show-sql: true
+    properties:
+      jadira.usertype.autoRegisterUserTypes: true
