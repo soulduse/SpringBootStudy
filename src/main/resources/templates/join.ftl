@@ -8,18 +8,15 @@
 
 <body>
     <div class="container">
-        <form class="form-signin">
-            <h2 class="form-signin-heading">Please sign in</h2>
+        <form class="form-signin" action="create" method="post">
+            <h2 class="form-signin-heading">회원가입</h2>
+            <label for="inputUsername" class="sr-only">Username</label>
+            <input type="text" id="name" class="form-control" placeholder="별명" required="" autofocus="">
             <label for="inputEmail" class="sr-only">Email address</label>
-            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+            <input type="email" id="email" class="form-control" placeholder="이메일" required="">
             <label for="inputPassword" class="sr-only">Password</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="remember-me"> Remember me
-                </label>
-            </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <input type="password" id="password" class="form-control" placeholder="비밀번호" required="">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">회원가입</button>
         </form>
     </div>
 

@@ -1,19 +1,20 @@
 package net.soul.sp.controller;
 
+import net.soul.sp.domain.JoinForm;
 import net.soul.sp.domain.Member;
-import net.soul.sp.repository.MemberRepository;
-import net.soul.sp.util.Log;
+import net.soul.sp.service.MemberService;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
@@ -25,41 +26,76 @@ import java.util.List;
 public class MainController{
 
     private static final Logger log = LoggerFactory.getLogger(MainController.class);
+    private final String TAG = getClass().getSimpleName();
 
     @Autowired
-    MemberRepository memberRepository;
+    MemberService memberService;
 
-    @RequestMapping("/")
-    public String index(){
+//    @ModelAttribute
+//    JoinForm setUpForm(){
+//        return new JoinForm();
+//    }
+
+    @RequestMapping(value = "/")
+    String index(){
         return "login";
     }
 
-    @RequestMapping("/member/add")
-    public Member add(Member member){
+    @RequestMapping(value = "join")
+    String joinMove(){
+        return "join";
+    }
+
+//    @RequestMapping(method = RequestMethod.GET)
+//    String list(Model model){
+//        List<Member> members = memberService.findAll();
+//        model.addAttribute("members", members);
+//        return "members/list";
+//    }
+
+    @RequestMapping(value = "create", method = RequestMethod.POST)
+    String create(@Validated JoinForm form, BindingResult result, Model model){
+        if(result.hasErrors()){
+//            return list(model);
+            log.error(TAG, "join create Error!");
+        }
+        Member member = new Member();
         DateTime dateTime = new DateTime();
         member.setRegDate(dateTime);
         member.setUpdDate(dateTime);
-        Member memberData = memberRepository.save(member);
-        return memberData;
+        BeanUtils.copyProperties(form, member);
+        memberService.create(member);
+        return "redirect:/join";
     }
 
-    @RequestMapping("/list")
-    public List<Member> list(Model model){
-        List<Member> memberList = memberRepository.findAll();
-        return memberList;
-    }
 
-    @RequestMapping("/email")
-    public List<Member> emailList(Model model){
-        List<Member> memberList = memberRepository.findByEmail("soul@gmail.com");
-        return memberList;
-    }
+//    @RequestMapping("/member/add")
+//    public Member add(Member member){
+//        DateTime dateTime = new DateTime();
+//        member.setRegDate(dateTime);
+//        member.setUpdDate(dateTime);
+//        memberService.create()
+//        Member memberData = memberService.save(member);
+//        return memberData;
+//    }
+//
+//    @RequestMapping("/list")
+//    public List<Member> list(Model model){
+//        List<Member> memberList = memberService.findAll();
+//        return memberList;
+//    }
+//
+//    @RequestMapping("/email")
+//    public List<Member> emailList(Model model){
+//        List<Member> memberList = memberService.findByEmail("soul@gmail.com");
+//        return memberList;
+//    }
 
 
     /*
 
      Pageable pageable = new PageRequest(0,3);
-        Page<Member> page = memberRepository.findAll(pageable);
+        Page<Member> page = memberService.findAll(pageable);
         log.info("한 페이지당 데이터 수 : "+page.getSize());
         log.info("현재 페이지 : "+page.getNumber());
         log.info("전체 페이지 수 : "+page.getTotalPages());
