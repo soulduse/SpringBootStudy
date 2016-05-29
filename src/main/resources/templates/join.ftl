@@ -8,12 +8,11 @@
 
 <body>
     <div class="container">
-        <form class="form-signin" action="create" method="post">
+        <form class="form-signin" action="/member/new" method="post">
             <h2 class="form-signin-heading">회원가입</h2>
-            <input type="text" id="name" class="form-control" placeholder="별명" required="" autofocus="">
-            <input type="email" id="email" class="form-control" placeholder="이메일" required="">
-            <input type="password" id="password" class="form-control" placeholder="비밀번호" required="">
-            <input type="hidden" id="regDate" value="">
+            <input type="text" id="name" class="form-control" name="name" placeholder="별명" required="" autofocus="">
+            <input type="email" id="email" class="form-control" name="email" placeholder="이메일" required="">
+            <input type="password" id="password" name="password" class="form-control" placeholder="비밀번호" required="">
             <button class="btn btn-lg btn-primary btn-block" type="submit">회원가입</button>
         </form>
     </div>

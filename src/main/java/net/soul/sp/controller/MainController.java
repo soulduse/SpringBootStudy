@@ -31,43 +31,6 @@ public class MainController{
     @Autowired
     MemberService memberService;
 
-    @ModelAttribute
-    JoinForm setUpForm(){
-        return new JoinForm();
-    }
-
-    @RequestMapping(value = "/")
-    String index(){
-        return "login";
-    }
-
-    @RequestMapping(value = "join")
-    String joinMove(){
-        return "join";
-    }
-
-//    @RequestMapping(method = RequestMethod.GET)
-//    String list(Model model){
-//        List<Member> members = memberService.findAll();
-//        model.addAttribute("members", members);
-//        return "members/list";
-//    }
-
-    @RequestMapping(value = "create", method = RequestMethod.POST)
-    String create(@Validated JoinForm form, BindingResult result, Model model){
-        if(result.hasErrors()){
-//            return list(model);
-            log.error(TAG, "join create Error!");
-        }
-        Member member = new Member();
-        DateTime dateTime = new DateTime();
-        member.setRegDate(dateTime);
-        member.setUpdDate(dateTime);
-        BeanUtils.copyProperties(form, member);
-        memberService.create(member);
-        return "redirect:/join";
-    }
-
 
 //    @RequestMapping("/member/add")
 //    public Member add(Member member){

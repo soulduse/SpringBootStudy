@@ -14,6 +14,7 @@ import java.util.List;
 @Repository
 public interface MemberRepository extends JpaRepository<Member, Long> {
     List<Member> findByName(String name);
+    //@Query(value = "SELECT x FROM Member x where x.email=:email")
     List<Member> findByEmail(String email);
     @Query("SELECT x FROM Member x ORDER BY x.name")
     List<Member> findAllOrderByName();

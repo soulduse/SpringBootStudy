@@ -19,6 +19,8 @@ import java.util.List;
  * @Transactional
  * => 외부에서 이 클래스의 메소드를 호출할 때 트랜잭션을 시작하고 메소드를 종료할 때 트랜잭션을 커밋한다.
  *      만약 예외가 발생시 트랜잭션을 롤백한다.
+ *      Tip : @Transactional의 경우 RuntimeException, 그자식들인 Unchecked 예외만 롤백한다.
+ *      만약 체크 예외가 발생해도 롤백하고 싶다면 @Transactional(rollbackFor = Exception.class)처럼 롤백할 예외를 지정해야 한다.
  */
 @Service
 @Transactional
@@ -27,15 +29,16 @@ public class MemberService {
     MemberRepository memberRepository;
 
     public Long join(Member member){
-        validateDuplicateMember(member);    // 이메일이 존재하는지 중복 회원 검증
+        validateDuplicateMember(member);
         memberRepository.save(member);
         return member.getId();
     }
 
+    // 이메일이 존재하는지 중복 회원 검증
     private void validateDuplicateMember(Member member){
         List<Member> findMembers =
                 memberRepository.findByEmail(member.getEmail());
-        if(findMembers.isEmpty()){
+        if(!findMembers.isEmpty()){
             throw new IllegalStateException("이미 존재하는 회원입니다.");
         }
     }

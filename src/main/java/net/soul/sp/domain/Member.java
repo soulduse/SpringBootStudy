@@ -27,12 +27,10 @@ public class Member {
     public Member(){
     }
 
-    public Member(String email, String password, String name, DateTime regDate, DateTime updDate){
+    public Member(String email, String password, String name){
         this.email      = email;
         this.password   = password;
         this.name       = name;
-        this.regDate    = regDate;
-        this.updDate    = updDate;
     }
 
     public long getId() {
