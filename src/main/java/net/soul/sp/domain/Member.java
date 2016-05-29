@@ -1,8 +1,6 @@
 package net.soul.sp.domain;
 
-import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
 
 import javax.persistence.*;
 
@@ -14,28 +12,35 @@ public class Member {
 
     @Id
     @GeneratedValue         // DB가 기본키 번호를 자동으로 매기도록 함.
-    private long idx;
+    private long id;
+    @Column(name = "email", length = 50, nullable = false)
     private String email;
+    @Column(name = "password", length = 20, nullable = false)
     private String password;
+    @Column(name = "name", length = 30, nullable = false)
     private String name;
+    @Column(name = "reg_date")
     private DateTime regDate;
+    @Column(name = "upd_date")
     private DateTime updDate;
 
     public Member(){
     }
 
-    public Member(String email, String password, String name){
+    public Member(String email, String password, String name, DateTime regDate, DateTime updDate){
         this.email      = email;
         this.password   = password;
         this.name       = name;
+        this.regDate    = regDate;
+        this.updDate    = updDate;
     }
 
-    public long getIdx() {
-        return idx;
+    public long getId() {
+        return id;
     }
 
-    public void setIdx(long idx) {
-        this.idx = idx;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getEmail() {
@@ -79,7 +84,7 @@ public class Member {
     }
 
     public String toString(){
-        return String.format("Member[idx=%d, email='%s', password='%s', name='%s', date='%s'",
-                idx, email, password, name, regDate);
+        return String.format("Member[id=%d, email='%s', password='%s', name='%s', date='%s'",
+                id, email, password, name, regDate);
     }
 }

@@ -62,7 +62,7 @@ public class MemberRestController {
         member.setRegDate(dateTime);
         member.setUpdDate(dateTime);
         Member created = memberService.create(member);
-        URI location = uriBuilder.path("api/members/{idx}").buildAndExpand(created.getIdx()).toUri();
+        URI location = uriBuilder.path("api/members/{idx}").buildAndExpand(created.getId()).toUri();
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(location);
         return new ResponseEntity<Member>(created, headers, HttpStatus.CREATED);
@@ -73,7 +73,7 @@ public class MemberRestController {
     Member putMember(@PathVariable Long idx, @RequestBody Member member){
         DateTime dateTime = new DateTime();
         member.setUpdDate(dateTime);
-        member.setIdx(idx);
+        member.setId(idx);
         return memberService.update(member);
     }
 

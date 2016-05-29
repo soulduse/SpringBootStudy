@@ -6,7 +6,8 @@ spring:
 
 # Database
   datasource:
-    url: jdbc:mysql://192.168.206.128:3306/spring4
+    # url: jdbc:mysql://192.168.206.128:3306/spring4 # Home
+    url: jdbc:mysql://192.168.117.130:3306/spring4 # Library
     username: root
     password: 1234
     driver-class-name: com.mysql.jdbc.Driver

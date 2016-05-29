@@ -31,10 +31,10 @@ public class MainController{
     @Autowired
     MemberService memberService;
 
-//    @ModelAttribute
-//    JoinForm setUpForm(){
-//        return new JoinForm();
-//    }
+    @ModelAttribute
+    JoinForm setUpForm(){
+        return new JoinForm();
+    }
 
     @RequestMapping(value = "/")
     String index(){
