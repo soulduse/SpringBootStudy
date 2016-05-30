@@ -28,28 +28,22 @@ public class MemberController {
     @Autowired
     MemberService memberService;
 
-
-
-    @RequestMapping(value = "/member/login", method = RequestMethod.GET)
-    public String createLoginForm(){
-        return "login";
-    }
-
-    @RequestMapping(value = "/member/new", method = RequestMethod.GET)
-    public String createJoinForm(){
-        return "join";
-    }
-
     @RequestMapping(value = "/member/new", method = RequestMethod.POST)
     public String create(Member member){
-        log.error(TAG, "email : "+member.getEmail());
-        log.error(TAG, "name : "+member.getName());
-        log.error(TAG, "password : "+member.getPassword());
         DateTime dateTime = new DateTime();
         member.setRegDate(dateTime);
         member.setUpdDate(dateTime);
         memberService.join(member);
-        return "redirect:/member/login";
+        return "redirect:/login";
+    }
+
+    @RequestMapping(value = "/member/new", method = RequestMethod.POST)
+    public String login(Member member){
+        DateTime dateTime = new DateTime();
+        member.setRegDate(dateTime);
+        member.setUpdDate(dateTime);
+        memberService.join(member);
+        return "redirect:/login";
     }
 
 
