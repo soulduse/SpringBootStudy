@@ -43,6 +43,18 @@ public class MemberService {
         }
     }
 
+    public boolean login(Member member){
+        List<Member> findMembers =
+                memberRepository.findByEmailAndPassword(
+                        member.getEmail(),
+                        member.getPassword());
+        if(!findMembers.isEmpty()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public List<Member> findAll(){
         return memberRepository.findAllOrderByName();
     }

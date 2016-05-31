@@ -26,6 +26,16 @@ public class MainController{
         return "join";
     }
 
+    @RequestMapping(value = "/sample", method = RequestMethod.GET)
+    public String createSuccessForm(){
+        return "sample";
+    }
+
+    @RequestMapping(value = "/fail", method = RequestMethod.GET)
+    public String createFailForm(){
+        return "fail";
+    }
+
     /*
      Pageable pageable = new PageRequest(0,3);
         Page<Member> page = memberService.findAll(pageable);

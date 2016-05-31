@@ -8,10 +8,10 @@
 
 <body>
     <div class="container">
-        <form class="form-signin">
+        <form class="form-signin" action="/member/login" method="post">
             <h2 class="form-signin-heading">Please sign in</h2>
-            <input type="email" id="inputEmail" class="form-control" placeholder="이메일" required="" autofocus="">
-            <input type="password" id="inputPassword" class="form-control" placeholder="비밀번호" required="">
+            <input type="email" id="inputEmail" class="form-control" name="email" placeholder="이메일" required="" autofocus="">
+            <input type="password" id="inputPassword" class="form-control" name="password" placeholder="비밀번호" required="">
             <div class="checkbox">
                 <label>
                     <input type="checkbox" value="remember-me"> 이메일 저장

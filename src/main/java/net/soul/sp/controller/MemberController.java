@@ -37,15 +37,18 @@ public class MemberController {
         return "redirect:/login";
     }
 
-    @RequestMapping(value = "/member/new", method = RequestMethod.POST)
-    public String login(Member member){
-        DateTime dateTime = new DateTime();
-        member.setRegDate(dateTime);
-        member.setUpdDate(dateTime);
-        memberService.join(member);
-        return "redirect:/login";
-    }
 
+    @RequestMapping(value = "/member/login", method = RequestMethod.POST)
+    public String login(Member member){
+        boolean loginResult = memberService.login(member);
+        if(loginResult){
+            log.debug(TAG+" / 로그인 성공");
+            return "redirect:/sample";
+        }else{
+            log.debug(TAG+" / 로그인 실패");
+            return "redirect:/fail";
+        }
+    }
 
 
 //

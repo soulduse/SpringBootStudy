@@ -4,10 +4,10 @@ spring:
     cache: false
     charset: UTF-8
 
+#    url: jdbc:mysql://192.168.117.130:3306/spring4 # Library
 # Database
   datasource:
-    # url: jdbc:mysql://192.168.206.128:3306/spring4 # Home
-    url: jdbc:mysql://192.168.117.130:3306/spring4 # Library
+    url: jdbc:mysql://192.168.206.128:3306/spring4 # Home
     username: root
     password: 1234
     driver-class-name: com.mysql.jdbc.Driver
