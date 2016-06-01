@@ -3,6 +3,7 @@ package net.soul.sp.controller;
 import net.soul.sp.domain.JoinForm;
 import net.soul.sp.domain.Member;
 import net.soul.sp.service.MemberService;
+import org.apache.catalina.connector.Request;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,8 +40,9 @@ public class MemberController {
 
 
     @RequestMapping(value = "/member/login", method = RequestMethod.POST)
-    public String login(Member member){
+    public String login(Member member, Request request){
         boolean loginResult = memberService.login(member);
+        request.getSession().getAttribute("name");
         if(loginResult){
             log.debug(TAG+" / 로그인 성공");
             return "redirect:/sample";
