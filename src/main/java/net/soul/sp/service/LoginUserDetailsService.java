@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 /**
  * Created by sould on 2016-06-02.
  */
-@Service
+@Service("loginUserDetailsService")
 public class LoginUserDetailsService implements UserDetailsService{
     @Autowired
     UserRepository userRepository;
@@ -25,4 +25,5 @@ public class LoginUserDetailsService implements UserDetailsService{
         }
         return new LoginUserDetails(user);
     }
+
 }

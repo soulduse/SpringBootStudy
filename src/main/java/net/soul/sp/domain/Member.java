@@ -24,7 +24,7 @@ public class Member {
     @Column(name = "upd_date")
     private DateTime updDate;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(nullable = true, name = "username")
+    @JoinColumn(nullable = true, name = "email")
     private User user;
 
 

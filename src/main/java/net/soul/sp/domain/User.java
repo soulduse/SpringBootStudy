@@ -9,10 +9,9 @@ import java.util.List;
  * Created by sould on 2016-06-02.
  */
 @Entity
-@Table(name = "users")
 public class User {
     @Id
-    private String username;
+    private String email;
 
     @JsonIgnore
     private String encodedPassword;
@@ -21,12 +20,12 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
     private List<Member> members;
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getEncodedPassword() {
