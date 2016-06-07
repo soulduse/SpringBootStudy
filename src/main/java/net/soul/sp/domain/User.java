@@ -9,7 +9,11 @@ import java.util.List;
  * Created by sould on 2016-06-02.
  */
 @Entity
+@Table(name = "user")
 public class User {
+
+    @Id
+    private Long id;
     @Id
     private String email;
 

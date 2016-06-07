@@ -11,15 +11,16 @@ import org.springframework.stereotype.Service;
 /**
  * Created by sould on 2016-06-02.
  */
-@Service("loginUserDetailsService")
-public class LoginUserDetailsService implements UserDetailsService{
-    @Autowired
-    UserRepository userRepository;
 
+@Service
+public class LoginUserDetailsService implements UserDetailsService{
+
+    @Autowired
+    UserService userService;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findOne(username);
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        User user = userService.getUserByEmail(email);
         if(user == null){
             throw new UsernameNotFoundException("The requested user is not found.");
         }
