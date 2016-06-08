@@ -26,10 +26,6 @@ public class Member {
     private DateTime regDate;
     @Column(name = "upd_date")
     private DateTime updDate;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(nullable = true, name = "email")
-    private User user;
-
 
     public Member(){
     }
@@ -94,14 +90,6 @@ public class Member {
 
     public void setUpdDate(DateTime updDate) {
         this.updDate = updDate;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public String toString(){

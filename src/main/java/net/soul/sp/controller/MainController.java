@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class MainController{
 
-    private static final Logger log = LoggerFactory.getLogger(MainController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MainController.class);
     private final String TAG = getClass().getSimpleName();
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)

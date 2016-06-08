@@ -3,7 +3,12 @@ package net.soul.sp.service;
 import net.soul.sp.domain.Member;
 import net.soul.sp.domain.MemberCreateForm;
 import net.soul.sp.repository.MemberRepository;
+import org.joda.time.DateTime;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,6 +33,8 @@ import java.util.Optional;
 @Service
 @Transactional
 public class MemberServiceImpl implements MemberService{
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(MemberServiceImpl.class);
 
     @Autowired
     MemberRepository memberRepository;
@@ -59,27 +66,6 @@ public class MemberServiceImpl implements MemberService{
         }
     }
 
-    public List<Member> findAll(){
-        return memberRepository.findAllOrderByName();
-    }
-
-    public Member findOne(long idx){
-        return memberRepository.findOne(idx);
-    }
-
-    public Member create(Member member){
-        return memberRepository.save(member);
-    }
-
-    public Member update(Member member){
-        return memberRepository.save(member);
-    }
-
-    public boolean delete(long idx){
-        memberRepository.delete(idx);
-        return !memberRepository.exists(idx);
-    }
-
     @Override
     public Optional<Member> getUserById(long id) {
         return Optional.ofNullable(memberRepository.findOne(id));
@@ -87,16 +73,25 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public Optional<Member> getUserByEmail(String email) {
-        return null;
+        return memberRepository.findOneByEmail(email);
     }
 
     @Override
     public Collection<Member> getAllUsers() {
-        return null;
+        return memberRepository.findAll(new Sort("email"));
     }
 
     @Override
     public Member create(MemberCreateForm form) {
-        return null;
+        DateTime dateTime = new DateTime();
+        Member   member   = new Member();
+
+        member.setEmail(form.getEmail());
+        member.setName(form.getName());
+        member.setPassword(new BCryptPasswordEncoder().encode(form.getPassword()));
+        member.setRole(form.getRole());
+        member.setUpdDate(dateTime);
+        member.setRegDate(dateTime);
+        return memberRepository.save(member);
     }
 }

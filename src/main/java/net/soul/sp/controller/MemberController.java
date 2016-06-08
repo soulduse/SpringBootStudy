@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class MemberController {
 
-    private static final Logger log = LoggerFactory.getLogger(MainController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MainController.class);
     private final String TAG = getClass().getSimpleName();
 
     @Autowired
@@ -37,10 +37,10 @@ public class MemberController {
     public String login(Member member, Model model){
         boolean loginResult = memberService.login(member);
         if(loginResult){
-            log.debug(TAG+" / 로그인 성공");
+            LOGGER.debug(TAG+" / 로그인 성공");
             return "redirect:/sample";
         }else{
-            log.debug(TAG+" / 로그인 실패");
+            LOGGER.debug(TAG+" / 로그인 실패");
             return "redirect:/fail";
         }
     }
@@ -51,7 +51,7 @@ public class MemberController {
 //    String create(@Validated JoinForm form, BindingResult result, Model model){
 //        if(result.hasErrors()){
 ////            return list(model);
-//            log.error(TAG, "join create Error!");
+//            LOGGER.error(TAG, "join create Error!");
 //        }
 //        Member member = new Member();
 //        DateTime dateTime = new DateTime();

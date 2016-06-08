@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SpringBootStudyApplication {
 
 
-	private static final Logger log = LoggerFactory.getLogger(SpringBootStudyApplication.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(SpringBootStudyApplication.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootStudyApplication.class, args);
