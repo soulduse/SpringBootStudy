@@ -6,9 +6,12 @@ import javax.validation.constraints.NotNull;
 /**
  * Created by sould on 2016-06-07.
  */
-public class UserCreateForm {
+public class MemberCreateForm {
     @NotEmpty
-    private String email = "";
+    private String email    = "";
+
+    @NotEmpty
+    private String name     = "";
 
     @NotEmpty
     private String password = "";
@@ -25,6 +28,14 @@ public class UserCreateForm {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPassword() {
@@ -53,7 +64,7 @@ public class UserCreateForm {
 
     @Override
     public String toString() {
-        return "UserCreateForm{" +
+        return "MemberCreateForm{" +
                 "email='" + email.replaceFirst("@.+", "@***") + '\'' +
                 ", password=***" + '\'' +
                 ", passwordRepeated=***" + '\'' +

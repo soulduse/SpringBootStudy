@@ -1,7 +1,7 @@
 package net.soul.sp.controller;
 
 import net.soul.sp.domain.Member;
-import net.soul.sp.service.MemberService;
+import net.soul.sp.service.MemberServiceImpl;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +21,7 @@ public class MemberController {
     private final String TAG = getClass().getSimpleName();
 
     @Autowired
-    MemberService memberService;
+    MemberServiceImpl memberService;
 
     @RequestMapping(value = "/member/new", method = RequestMethod.POST)
     public String create(Member member){

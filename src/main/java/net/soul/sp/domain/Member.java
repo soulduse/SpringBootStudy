@@ -13,12 +13,15 @@ public class Member {
     @Id
     @GeneratedValue         // DB가 기본키 번호를 자동으로 매기도록 함.
     private long id;
-    @Column(name = "email", length = 50, nullable = false)
+    @Column(name = "email", length = 50, nullable = false, unique = true)
     private String email;
     @Column(name = "password", length = 20, nullable = false)
     private String password;
     @Column(name = "name", length = 30, nullable = false)
     private String name;
+    @Column(name = "role", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Role role;
     @Column(name = "reg_date")
     private DateTime regDate;
     @Column(name = "upd_date")
@@ -67,6 +70,14 @@ public class Member {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public DateTime getRegDate() {

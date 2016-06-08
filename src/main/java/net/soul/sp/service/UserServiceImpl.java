@@ -1,8 +1,8 @@
 package net.soul.sp.service;
 
-import net.soul.sp.domain.User;
-import net.soul.sp.domain.UserCreateForm;
-import net.soul.sp.repository.UserRepository;
+import net.soul.sp.domain.Member;
+import net.soul.sp.domain.MemberCreateForm;
+import net.soul.sp.repository.MemberRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,39 +17,39 @@ import java.util.Optional;
  * Created by sould on 2016-06-07.
  */
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements MemberService {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
-    private final UserRepository userRepository;
+    private final MemberRepository memberRepository;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserServiceImpl(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
     }
 
     @Override
-    public Optional<User> getUserById(long id) {
+    public Optional<Member> getUserById(long id) {
         LOGGER.debug("Getting user={}", id);
-        return Optional.ofNullable(userRepository.findOne(id));
+        return Optional.ofNullable(memberRepository.findOne(id));
     }
 
     @Override
-    public Optional<User> getUserByEmail(String email) {
+    public Optional<Member> getUserByEmail(String email) {
         LOGGER.debug("Getting user by email={}", email.replaceFirst("@.*", "@***"));
-        return userRepository.findOneByEmail(email);
+        return memberRepository.findOneByEmail(email);
     }
 
     @Override
-    public Collection<User> getAllUsers() {
+    public Collection<Member> getAllUsers() {
         LOGGER.debug("Getting all users");
-        return userRepository.findAll(new Sort("email"));
+        return memberRepository.findAll(new Sort("email"));
     }
 
     @Override
-    public User create(UserCreateForm form) {
-        User user = new User();
-        user.setEmail(form.getEmail());
-        user.setPasswordHash(new BCryptPasswordEncoder().encode(form.getPassword()));
-        user.setRole(form.getRole());
-        return userRepository.save(user);
+    public Member create(MemberCreateForm form) {
+        Member member = new Member();
+        member.setEmail(form.getEmail());
+        member.setPassword(new BCryptPasswordEncoder().encode(form.getPassword()));
+        member.setRole(form.getRole());
+        return memberRepository.save(member);
     }
 }

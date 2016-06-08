@@ -1,7 +1,7 @@
 package net.soul.sp.controller;
 
 import net.soul.sp.domain.Member;
-import net.soul.sp.service.MemberService;
+import net.soul.sp.service.MemberServiceImpl;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -24,7 +24,7 @@ import java.util.List;
 @RequestMapping("api/members")
 public class MemberRestController {
     @Autowired
-    MemberService memberService;
+    MemberServiceImpl memberService;
 
     // @RequestMapping("api/members")의 GET으로 접속시 메서드 실행 됨.
     @RequestMapping(method = RequestMethod.GET)
