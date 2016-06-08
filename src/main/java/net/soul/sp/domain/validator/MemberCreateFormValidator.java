@@ -11,7 +11,6 @@ import org.springframework.validation.Validator;
 
 /**
  * Created by sould on 2016-06-08.
- * @Component 어노테이션을 클래스에 작성하면 빈 스캐너를 통해 자동 빈 등록 됨.
  */
 @Component
 public class MemberCreateFormValidator implements Validator {

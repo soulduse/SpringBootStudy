@@ -68,16 +68,19 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public Optional<Member> getUserById(long id) {
+        LOGGER.debug("Getting user={}", id);
         return Optional.ofNullable(memberRepository.findOne(id));
     }
 
     @Override
     public Optional<Member> getUserByEmail(String email) {
+        LOGGER.debug("Getting user by email={}", email.replaceFirst("@.*", "@***"));
         return memberRepository.findOneByEmail(email);
     }
 
     @Override
     public Collection<Member> getAllUsers() {
+        LOGGER.debug("Getting all users");
         return memberRepository.findAll(new Sort("email"));
     }
 
