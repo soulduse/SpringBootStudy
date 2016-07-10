@@ -30,8 +30,9 @@ import java.util.Optional;
  *      Tip : @Transactional의 경우 RuntimeException, 그자식들인 Unchecked 예외만 롤백한다.
  *      만약 체크 예외가 발생해도 롤백하고 싶다면 @Transactional(rollbackFor = Exception.class)처럼 롤백할 예외를 지정해야 한다.
  */
+
+
 @Service
-@Transactional
 public class MemberServiceImpl implements MemberService{
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MemberServiceImpl.class);
